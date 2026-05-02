@@ -1,0 +1,21 @@
+onvif:
+  - name: DrivewayCars                              # A user define named that will show up in the consumer device. Use letters only, no spaces or special characters
+    description: DrivewayCars                       # A user define model that will show up in Protect Use letters only, no spaces or special characters
+    dev: enp3s0                                     # Network interface to add virtual IP's too. use ip addr to find your name
+    target:
+      hostname: 192.168.1.73                        # Your cameras IPv4 address
+      ports:
+        rtsp: 554                                   # Your cameras RTSP port. Typically 554
+        snapshot: 80                                # Cameras non https port for snapshots
+    highQuality:
+      rtsp: /cam/realmonitor?channel=2&subtype=0    # The RTSP Path
+      snapshot: /cgi-bin/snapshot.cgi?channel=2     # Snapshot path - not working yet
+      width: 3840                                   # The Video Width
+      height: 2160                                  # The Video Height
+      framerate: 30                                 # The Video Framerate/FPS
+      bitrate: 16384                                # The Video Bitrate in kb/s
+      quality: 4                                    # Quality, leave this as 4 for the high quality stream.
+    ports:                                           # Virtual server ports. No need to change these unles you run into port already in use problems
+      server: 8081
+      rtsp: 8554
+      snapshot: 8080
